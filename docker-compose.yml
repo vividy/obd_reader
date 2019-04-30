@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  db:
+#    image: tobi312/rpi-postgresql:latest
+    image: postgres:10.4
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    restart: on-failure
+    ports:
+      - "5432:5432"
