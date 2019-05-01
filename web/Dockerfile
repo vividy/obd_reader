@@ -1,8 +1,7 @@
-FROM python:3.6-slim
+FROM python:3
 
 RUN mkdir /code
 
-# Go to code directory
 WORKDIR /code
 
 COPY requirements.txt /code/

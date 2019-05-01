@@ -20,3 +20,16 @@ services:
     command: bash -c "python -u test.py"
     depends_on:
       - db
+
+  web:
+    build: ./web
+    volumes:
+      - ./web:/code
+    env_file:
+      - .env
+    restart: on-failure
+    command: bash -c "FLASK_APP=server.py flask run"
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
