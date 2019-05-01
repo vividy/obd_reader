@@ -9,3 +9,14 @@ services:
     restart: on-failure
     ports:
       - "5432:5432"
+
+  puller:
+    build: ./puller
+    volumes:
+      - ./puller:/code
+    env_file:
+      - .env
+    restart: on-failure
+    command: bash -c "python -u test.py"
+    depends_on:
+      - db
